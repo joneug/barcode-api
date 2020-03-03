@@ -11,5 +11,5 @@ cat "versions.txt" | while read VERSION
 do
     IMAGE_TAG="${DOCKER_REPO}:${VERSION}"
     echo "Building image ${IMAGE_TAG}"
-    docker build --build-arg VERSION=${VERSION} -t "${IMAGE_TAG}"
+    docker build --build-arg VERSION=${VERSION} -t "${IMAGE_TAG}" .
 done
