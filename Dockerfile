@@ -8,4 +8,4 @@ RUN BWIP_VERSION=VERSION npm run dependencies
 COPY . .
 
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
