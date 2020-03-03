@@ -1,0 +1,14 @@
+name: docker-hub-build
+
+on:
+  schedule:
+    - cron: '0 0 * * SUN'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Docker Hub Build
+        env: 
+          DH_TRIGGER_URL: ${{ secrets.DH_TRIGGER_URL }}
+        run: curl $DH_TRIGGER_URL
