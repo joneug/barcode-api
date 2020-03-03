@@ -10,7 +10,7 @@ docker run --rm node:lts-slim npm view bwip-js versions --json | ./jq -r '.[]' |
 cat versions.txt | while read VERSION
 do
     IMAGE_TAG="${DOCKER_REPO}:${VERSION}"
-    LATEST_VERSION="${cat versions.txt | tail -n 1}"
+    LATEST_VERSION="$(cat versions.txt | tail -n 1)"
     echo "Building image ${IMAGE_TAG}"
     if [ $VERSION=$LATEST_VERSION ]
     then
