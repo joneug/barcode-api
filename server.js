@@ -1,3 +1,5 @@
+// Adapted from https://github.com/metafloor/bwip-js#nodejs-request-handler
+
 // Simple HTTP server that renders barcode images using bwip-js.
 const http   = require('http');
 const bwipjs = require('bwip-js');
