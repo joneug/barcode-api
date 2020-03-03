@@ -6,4 +6,4 @@ do
     docker push "${DOCKER_REPO}:${VERSION}"
 done
 
-docker push "latest""
+docker push "latest"
