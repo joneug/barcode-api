@@ -7,10 +7,10 @@ chmod +x ./jq
 echo "Getting 10 latest bwip-js versions"
 docker run --rm node:lts-slim npm view bwip-js versions --json | ./jq -r '.[]' | tail -n 10 > versions.txt
 
-cat "versions.txt" | while read VERSION
+cat versions.txt | while read VERSION
 do
     IMAGE_TAG="${DOCKER_REPO}:${VERSION}"
-    LATEST_VERSION="${cat "versions.txt" | tail -n 1}"
+    LATEST_VERSION="${cat versions.txt | tail -n 1}"
     echo "Building image ${IMAGE_TAG}"
     if [ $VERSION=$LATEST_VERSION ]
     then
