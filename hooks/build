@@ -4,8 +4,8 @@ echo "Installing jq"
 curl -L -o ./jq "$(curl -s "https://api.github.com/repos/stedolan/jq/releases/latest" | grep browser_download_url | grep 'jq-linux64' | cut -d '"' -f 4)"
 chmod +x ./jq
 
-echo "Getting 32 latest bwip-js versions"
-docker run --rm node:lts-slim npm view bwip-js versions --json | ./jq -r '.[]' | tail -n 32 > versions.txt
+echo "Getting the latest bwip-js version"
+docker run --rm node:lts-slim npm view bwip-js versions --json | ./jq -r '.[]' | tail -n 1 > versions.txt
 
 echo "Building images"
 cat versions.txt | while read VERSION
