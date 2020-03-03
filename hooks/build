@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Installing jq"
+curl -L -o ./jq "$(curl -s "https://api.github.com/repos/stedolan/jq/releases/latest" | grep browser_download_url | grep 'jq-linux64' | cut -d '"' -f 4)"
+chmod +x ./jq
+
+echo "Getting 10 latest bwip-js versions"
+docker run --rm node:lts-slim npm view bwip-js versions --json | ./jq -r '.[]' | tail -n 10 > versions.txt
+
+cat "versions.txt" | while read VERSION
+do
+    IMAGE_TAG="${DOCKER_REPO}:${VERSION}"
+    echo "Building image ${IMAGE_TAG}"
+    docker build --build-arg VERSION=${VERSION} -t "${IMAGE_TAG}"
+done

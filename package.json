@@ -1,0 +1,14 @@
+{
+    "name": "barcode-api",
+    "version": "0.0.1",
+    "description": "Barcode API based on bwip-js",
+    "main": "server.js",
+    "scripts": {
+        "dependencies": "npm install bwip-js@$BWIP_VERSION",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/joneug/barcode-api.git"
+    }
+}

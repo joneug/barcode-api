@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cat "versions.txt" | while read VERSION
+do
+    IMAGE_TAG="${DOCKER_REPO}:${VERSION}"
+    echo "Pushing image ${IMAGE_TAG}"
+    docker push ${IMAGE_TAG}
+done
