@@ -11,4 +11,4 @@ jobs:
       - name: Trigger Docker Hub Build
         env: 
           DH_TRIGGER_URL: ${{ secrets.DH_TRIGGER_URL }}
-        run: curl -X POST $DH_TRIGGER_URL
+        run: curl -s -X POST $DH_TRIGGER_URL > /dev/null
